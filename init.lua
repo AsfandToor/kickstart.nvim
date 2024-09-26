@@ -354,6 +354,21 @@ require('lazy').setup({
     branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
+
+      -- JSONIFY
+      {
+        "Myzel394/jsonfly.nvim",
+        keys = {
+          {
+              "<leader>j",
+              "<cmd>Telescope jsonfly<cr>",
+              desc = "Open json(fly)",
+              ft = { "json", "xml", "yaml" },
+              mode = "n"
+          }
+        }
+      },
+
       { -- If encountering errors, see telescope-fzf-native README for installation instructions
         'nvim-telescope/telescope-fzf-native.nvim',
 
@@ -888,6 +903,18 @@ require('lazy').setup({
     end,
   },
 
+  -- Night OWL Theme
+  {
+    "oxfist/night-owl.nvim",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      -- load the colorscheme here
+      require("night-owl").setup()
+      vim.cmd.colorscheme("night-owl")
+    end,
+  },
+
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
@@ -968,6 +995,7 @@ require('lazy').setup({
   require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.telescope-browser',
   require 'kickstart.plugins.barbar',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
