@@ -357,16 +357,16 @@ require('lazy').setup({
 
       -- JSONIFY
       {
-        "Myzel394/jsonfly.nvim",
+        'Myzel394/jsonfly.nvim',
         keys = {
           {
-              "<leader>j",
-              "<cmd>Telescope jsonfly<cr>",
-              desc = "Open json(fly)",
-              ft = { "json", "xml", "yaml" },
-              mode = "n"
-          }
-        }
+            '<leader>j',
+            '<cmd>Telescope jsonfly<cr>',
+            desc = 'Open json(fly)',
+            ft = { 'json', 'xml', 'yaml' },
+            mode = 'n',
+          },
+        },
       },
 
       { -- If encountering errors, see telescope-fzf-native README for installation instructions
@@ -843,8 +843,8 @@ require('lazy').setup({
         options = {
           icons_enabled = true,
           theme = 'solarized_dark',
-          component_separators = { left = '', right = ''},
-          section_separators = { left = '', right = ''},
+          component_separators = { left = '', right = '' },
+          section_separators = { left = '', right = '' },
           disabled_filetypes = {
             statusline = {},
             winbar = {},
@@ -856,30 +856,30 @@ require('lazy').setup({
             statusline = 1000,
             tabline = 1000,
             winbar = 1000,
-          }
+          },
         },
         sections = {
-          lualine_a = {'mode'},
-          lualine_b = {'branch', 'diff', 'diagnostics'},
-          lualine_c = {'filename'},
-          lualine_x = {'encoding', 'fileformat', 'filetype'},
-          lualine_y = {'progress'},
-          lualine_z = {'location'}
+          lualine_a = { 'mode' },
+          lualine_b = { 'branch', 'diff', 'diagnostics' },
+          lualine_c = { 'filename' },
+          lualine_x = { 'encoding', 'fileformat', 'filetype' },
+          lualine_y = { 'progress' },
+          lualine_z = { 'location' },
         },
         inactive_sections = {
           lualine_a = {},
           lualine_b = {},
-          lualine_c = {'filename'},
-          lualine_x = {'location'},
+          lualine_c = { 'filename' },
+          lualine_x = { 'location' },
           lualine_y = {},
-          lualine_z = {}
+          lualine_z = {},
         },
         tabline = {},
         winbar = {},
         inactive_winbar = {},
-        extensions = {}
+        extensions = {},
       }
-    end
+    end,
   },
 
   { -- You can easily change to a different colorscheme.
@@ -905,14 +905,34 @@ require('lazy').setup({
 
   -- Night OWL Theme
   {
-    "oxfist/night-owl.nvim",
+    'oxfist/night-owl.nvim',
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- load the colorscheme here
-      require("night-owl").setup()
-      vim.cmd.colorscheme("night-owl")
+      require('night-owl').setup()
+      vim.cmd.colorscheme 'night-owl'
     end,
+  },
+
+  {
+    'kdheepak/lazygit.nvim',
+    cmd = {
+      'LazyGit',
+      'LazyGitConfig',
+      'LazyGitCurrentFile',
+      'LazyGitFilter',
+      'LazyGitFilterCurrentFile',
+    },
+    -- optional for floating window border decoration
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+    -- setting the keybinding for LazyGit with 'keys' is recommended in
+    -- order to load the plugin when the command is run for the first time
+    keys = {
+      { '<leader>lg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
+    },
   },
 
   -- Highlight todo, notes, etc in comments
